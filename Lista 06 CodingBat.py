@@ -52,11 +52,8 @@ def diff21(n):
 # temos problemas se o papagaio estiver falando
 # antes da 7 ou depois das 20
 def papagaio(falando, hora):
-  if falando:
-    if hora < 7 or hora > 20:
-      return True
-    else:
-      return False
+  if falando and (hora < 7 or hora > 20):
+    return True
   else:
     return False
 
