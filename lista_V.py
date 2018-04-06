@@ -1,8 +1,7 @@
 #-------------------------------------------------------
 # Exercício A
 print("============= Exercício A ==============")
-x = 2
-y = 5
+x,y = 2,5
 if y > 8: y = y * 2
 else: x = x * 2
 print(f"imprime: {x + y}")
@@ -65,15 +64,12 @@ números = '''
 637656 641136 644176 644973 647617 652218 657143 659902
 662224 666265 668010 672480 672695 676868 677125 678315
 '''.split()
-válidos = soma_dígitos = cont = 0
-for x in range(len(números)):
+válidos = soma = cont = 0
+for x in números:
     for i in range(6):
-        soma_dígitos += int(números[x][i])
-        if i < 5:
-            if números[x][i] != números[x][i+1]:
-                cont += 1
-    if cont == 5 and soma_dígitos % 2 == 0 and números[x][0] != números[x][-1]:
-        válidos += 1
-    soma_dígitos = cont = 0
+        soma += int(x[i])
+        if i < 5 and x[i] != x[i+1]: cont += 1
+    if cont == 5 and soma % 2 == 0 and x[0] != x[-1]: válidos += 1
+    soma = cont = 0
 print(f"válidos: {válidos}")
 #-------------------------------------------------------
