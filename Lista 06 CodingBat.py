@@ -18,10 +18,7 @@ def dormir(dia_semana, feriado):
 # temos problemas quando ambos estão sorrindo ou ambos não estão sorrindo
 # retorne True quando houver problemas
 def alunos_problema(a_sorri, b_sorri):
-  if a_sorri and b_sorri or not a_sorri and not b_sorri:
-    return True
-  else:
-    return False
+  return a_sorri == b_sorri
 
 # C. soma_dobro
 # dados dois números inteiros retorna sua soma
@@ -85,10 +82,7 @@ def dista10(n):
 # apaga('kitten', 1) -> 'ktten'
 # apaga('kitten', 4) -> 'kittn'
 def apaga(s, n):
-  ns = ''
-  for k in range(len(s)):
-    if(k != n): ns += s[k]
-  return ns
+  return s[:n] + s[n+1:]
 
 # I. troca
 # seja uma string s
@@ -99,7 +93,7 @@ def apaga(s, n):
 # troca('ab') -> 'ba'
 def troca(s):
   if len(s) <= 1: return s
-  else: return s[-1] + s[1:len(s)-1] + s[0]
+  else: return s[-1] + s[1:-1] + s[0]
 
 # Provided simple test() function used in main() to print
 # what each function returns vs. what it's supposed to return.
@@ -209,4 +203,3 @@ def main():
   
 if __name__ == '__main__':
   main()
-
