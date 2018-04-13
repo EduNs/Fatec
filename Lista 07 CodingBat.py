@@ -6,27 +6,24 @@
 # retorna uma string com n cópias da string original
 # multstring('Hi', 2) -> 'HiHi'
 def multstring(s, n):
-  return s*n
+  return s * n
 
 # B. string_splosion
 # string_splosion('Code') -> 'CCoCodCode'
 # string_splosion('abc') -> 'aababc'
 # string_splosion('ab') -> 'aab'
 def string_splosion(s):
-  nova_str = ''
+  r = ''
   c = 0
   while c <= len(s):
-    nova_str += s[:c]
+    r += s[:c]
     c += 1
-  return nova_str
+  return r
 
 # C. array_count9
 # conta quantas vezes aparece o 9 numa lista nums
 def array_count9(nums):
-  c = 0
-  for k in nums:
-    if k == 9: c += 1
-  return c
+  return nums.count(9)
 
 # D. array_front9
 # verifica se pelo menos um dos quatro primeiros é nove
@@ -34,13 +31,7 @@ def array_count9(nums):
 # array_front9([1, 2, 3, 4, 9]) -> False
 # array_front9([1, 2, 3, 4, 5]) -> False
 def array_front9(nums):
-  c = 0
-  for k in nums:
-    if k == 9:
-      if c < 3:
-        return True
-    c += 1
-  return False
+  return 9 in nums[:4]
 
 # E. hello_name
 # seja uma string name
@@ -73,7 +64,7 @@ def extra_end(s):
 # first_half('HelloThere') -> 'Hello'
 # first_half('abcdef') -> 'abc'
 def first_half(s):
-  return s[:int(len(s)/2)]
+  return s[:len(s)//2]
 
 # I. sem_pontas
 # seja uma string s de pelo menos dois caracteres
@@ -99,7 +90,7 @@ def test(obtido, esperado):
     prefixo = ' Parabéns!'
   else:
     prefixo = ' Ainda não'
-  print ('%s obtido: %s - esperado: %s'
+  print ('%s obtido: %s esperado: %s'
          % (prefixo, repr(obtido), repr(esperado)))
 
 def main():
