@@ -13,8 +13,7 @@ def multstring(s, n):
 # string_splosion('abc') -> 'aababc'
 # string_splosion('ab') -> 'aab'
 def string_splosion(s):
-  r = ''
-  c = 0
+  r,c = '',0
   while c <= len(s):
     r += s[:c]
     c += 1
