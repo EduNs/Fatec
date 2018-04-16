@@ -49,19 +49,13 @@ def diff21(n):
 # temos problemas se o papagaio estiver falando
 # antes da 7 ou depois das 20
 def papagaio(falando, hora):
-  if falando and (hora < 7 or hora > 20):
-    return True
-  else:
-    return False
+  return falando and (hora < 7 or hora > 20)
 
 # F. dez
 # dados dois inteiros a e b
 # retorna True se um dos dois é 10 ou a soma é 10
 def dez(a, b):
-  if a == 10 or b == 10 or a+b == 10:
-    return True
-  else:
-    return False
+  return a == 10 or b == 10 or a+b == 10
 
 # G. dista10
 # seja um inteiro n
@@ -71,10 +65,7 @@ def dez(a, b):
 # dista10(90) -> True
 # dista10(89) -> False
 def dista10(n):
-  if abs(n-100) <= 10 or abs(n-200) <= 10:
-    return True
-  else:
-    return False
+  return abs(n-100) <= 10 or abs(n-200) <= 10
 
 # H. apaga
 # seja uma string s e um inteiro n
