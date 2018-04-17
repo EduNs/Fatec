@@ -41,8 +41,7 @@ def maior_ponta(nums):
   else:                                 |
     return [nums[-1],nums[-1],nums[-1]] |
   '''
-  maior = max(nums[0],nums[-1])         #  melhor versão
-  return len(nums) * [maior]            #
+  return [max(nums[0],nums[-1])] * len(nums) #  melhor versão
 
 # E. sum2
 # Dada uma lista de inteiros de qualquer tamanho
@@ -139,7 +138,7 @@ def pego_correndo(speed, is_birthday):
     else: return 2                            |
   '''
   if is_birthday:                             #  
-    speed = speed - 5                         #
+    speed -= 5                                #
   if speed <= 60:                             #
     return 0                                  #
   elif speed <= 80:                           #  Melhor versão
