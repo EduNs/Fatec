@@ -8,11 +8,7 @@
 # near_ten(17) -> False
 # near_ten(19) -> True
 def near_ten(n):
-  resto = n % 10
-  if resto <= 2 or 10 - resto <= 2:
-    return True
-  else:
-    return False
+  return n % 10 <= 2 or 10 - n % 10 <= 2
 
 # B. lone_sum
 # Soma maluca: some os números inteiros a, b, e c
@@ -26,19 +22,19 @@ def lone_sum(a, b, c):
     elif a == c: return b
     elif b == c: return a
     else: return a+b+c
-  else: return 0
+  return 0
 
-# C. luck_sum
+# C. lucky_sum
 # Soma três inteiros a, b, c
 # Se aparecer um 13 ele não conta e todos os da sua direita também
 # lucky_sum(1, 2, 3) -> 6
 # lucky_sum(1, 2, 13) -> 3
 # lucky_sum(1, 13, 3) -> 1
 def lucky_sum(a, b, c):
-  if a != 13 and b != 13 and c != 13: return a+b+c
+  if 13 not in (a,b,c): return a+b+c
   elif a == 13: return 0
   elif b == 13: return a
-  else: return a+b
+  return a+b
 
 # D. double_char
 # retorna os caracteres da string original duplicados
@@ -46,21 +42,18 @@ def lucky_sum(a, b, c):
 # double_char('AAbb') -> 'AAAAbbbb'
 # double_char('Hi-There') -> 'HHii--TThheerree'
 def double_char(s):
-  nova_string = ''
+  r = ''
   for k in range(len(s)):
-    nova_string += s[k] * 2
-  return nova_string
-
+    r += s[k] * 2
+  return r
+  
 # E. count_hi
 # conta o número de vezes que aparece a string 'hi'
 # count_hi('abc hi ho') -> 1
 # count_hi('ABChi hi') -> 2
 # count_hi('hihi') -> 2
 def count_hi(s):
-  count_hi = 0
-  for k in range(len(s)-1):
-    if s[k]+s[k+1] == 'hi': count_hi += 1
-  return count_hi
+  return s.count('hi')
 
 # F. cat_dog
 # verifica se o aparece o mesmo número de vezes 'cat' e 'dog'
@@ -68,12 +61,7 @@ def count_hi(s):
 # cat_dog('catcat') -> False
 # cat_dog('1cat1cadodog') -> True
 def cat_dog(s):
-  count_cat = count_dog = 0
-  for k in range(len(s)-2):
-    if s[k]+s[k+1]+s[k+2] == 'cat': count_cat += 1
-    elif s[k]+s[k+1]+s[k+2] == 'dog': count_dog += 1
-  if count_cat == count_dog: return True
-  else: return False
+  return s.count('cat') == s.count('dog')
 
 # G. count_code
 # conta quantas vezes aparece 'code'
@@ -84,8 +72,8 @@ def cat_dog(s):
 # count_code('cozexxcope') -> 2
 def count_code(s):
   count_code = 0
-  for k in range(len(s)):
-    if k < len(s)-3 and s[k]+s[k+1]+s[k+3] == 'coe':
+  for k in range(len(s)-3):
+    if s[k:k+2] + s[k+3] == 'coe':
       count_code += 1
   return count_code
 
@@ -98,8 +86,7 @@ def count_code(s):
 # end_other('abc', 'abXabc') -> True
 def end_other(a, b):
   a,b = a.lower(),b.lower()
-  if b.endswith(a) or a.endswith(b): return True
-  else: return False
+  return b.endswith(a) or a.endswith(b)
 
 # I. count_evens
 # conta os números pares da lista
@@ -149,7 +136,7 @@ def has22(nums):
 # soma_na_lista(4, [2, 2, 1, 3]) -> True
 def soma_na_lista(n, lista):
   for k in range(len(lista)-1):
-    if n == lista[k]+lista[k+1] and lista[k] != lista[k+1]: return True
+    if n == sum(lista[k:k+2]) and lista[k] != lista[k+1]: return True
   return False
 
 # M.Difícil: Fila de tijolos sem usar loops
@@ -161,8 +148,7 @@ def soma_na_lista(n, lista):
 # fila_tijolos(3, 1, 9) -> False
 # fila_tijolos(3, 2, 10) -> True
 def fila_tijolos(n_peq, n_gra, meta):
-  if n_peq + n_gra * 5 >= meta and n_peq >= meta % 5: return True
-  else: return False
+  return n_peq + n_gra * 5 >= meta and n_peq >= meta % 5
 
 # Provided simple test() function used in main() to print
 # what each function returns vs. what it's supposed to return.
