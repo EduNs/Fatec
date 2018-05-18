@@ -121,10 +121,13 @@ def sum13(nums):
 # has22([1, 2, 1, 2]) -> False
 # has22([2, 1, 2]) -> False
 def has22(nums):
+  '''
   if len(nums) > 1:
     for k in range(len(nums)-1):
       if nums[k] == nums[k+1]: return True
   return False
+  '''
+  return '2, 2' in str(nums)
 
 # L. soma_na_lista
 # Verifica se um número é soma de dois elementos distintos de uma lista
