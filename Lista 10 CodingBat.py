@@ -42,10 +42,7 @@ def lucky_sum(a, b, c):
 # double_char('AAbb') -> 'AAAAbbbb'
 # double_char('Hi-There') -> 'HHii--TThheerree'
 def double_char(s):
-  r = ''
-  for k in range(len(s)):
-    r += s[k] * 2
-  return r
+  return s[0] * 2 + double_char(s[1:]) if s != '' else ''
   
 # E. count_hi
 # conta o número de vezes que aparece a string 'hi'
@@ -71,12 +68,10 @@ def cat_dog(s):
 # count_code('codexxcode') -> 2
 # count_code('cozexxcope') -> 2
 def count_code(s):
-  count_code = 0
-  for k in range(len(s)-3):
-    if s[k:k+2] + s[k+3] == 'coe':
-      count_code += 1
-  return count_code
-
+  import re
+  p = re.compile(r'co.e')
+  return len(re.findall(p,s))
+  
 # H. end_other
 # as duas strings devem ser convertidas para minúsculo via lower()
 # depois disso verifique que no final da string b ocorre a string a
@@ -85,8 +80,7 @@ def count_code(s):
 # end_other('AbC', 'HiaBc') -> True
 # end_other('abc', 'abXabc') -> True
 def end_other(a, b):
-  a,b = a.lower(),b.lower()
-  return b.endswith(a) or a.endswith(b)
+  return b.lower().endswith(a) or a.lower().endswith(b)
 
 # I. count_evens
 # conta os números pares da lista
@@ -94,11 +88,7 @@ def end_other(a, b):
 # count_evens([2, 2, 0]) -> 3
 # count_evens([1, 3, 5]) -> 0
 def count_evens(nums):
-  count_evens = 0
-  if len(nums) > 0:
-    for k in nums:
-      if k % 2 == 0: count_evens += 1
-  return count_evens
+  return len([k for k in nums if k % 2 == 0])
 
 # J. sum13
 # retorna a soma dos números de uma lista
@@ -108,12 +98,7 @@ def count_evens(nums):
 # sum13([1, 2, 2, 1, 13]) -> 6
 # sum13([13, 1, 2, 3, 4]) -> 0
 def sum13(nums):
-  soma = 0
-  if len(nums) > 0:
-    for k in nums:
-      if k != 13: soma += k
-      else: break
-  return soma
+  return sum([k for k in nums[:nums.index(13)]]) if 13 in nums else sum(nums)
 
 # K. has22
 # Verifica se na lista de números inteiros aparecem dois 2 consecutivos
@@ -121,12 +106,6 @@ def sum13(nums):
 # has22([1, 2, 1, 2]) -> False
 # has22([2, 1, 2]) -> False
 def has22(nums):
-  '''
-  if len(nums) > 1:
-    for k in range(len(nums)-1):
-      if nums[k] == nums[k+1]: return True
-  return False
-  '''
   return '2, 2' in str(nums)
 
 # L. soma_na_lista
